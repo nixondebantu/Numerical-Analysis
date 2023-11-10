@@ -7,6 +7,7 @@ e = input("Enter tolerance: ");
 
 %root storing matrix
 roots = [];
+k=a;
 
 %False-position start
 if f(a)*f(b)<0 && a<b
@@ -14,13 +15,14 @@ if f(a)*f(b)<0 && a<b
         c = (a*f(b) - b*f(a))/(f(b) - f(a));    %root caluculation
         fprintf("Root for iteration %d is: %f\n",i,c);  %root printing
         roots = [roots; c]; %root storing
-        if abs(f(c)) < e
+        if abs(f(c)) < e || abs(k-c) < e
             break;
         elseif f(a)*f(c) < 0
             b = c;
         else
             a = c;
         end
+        k = c;
     end
 
 else
